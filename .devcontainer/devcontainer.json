@@ -10,14 +10,15 @@
   "settings": {
     "terminal.integrated.shell.linux": "/bin/bash",
     "editor.formatOnSave": true,
-    "ocaml-formatter.profile": "janestreet",
-    "[ocaml]": {
-      "editor.defaultFormatter": "badochov.ocaml-formatter"
-    }
+    // "ocaml-formatter.profile": "janestreet",
+    // "[ocaml]": {
+    //   "editor.defaultFormatter": "badochov.ocaml-formatter"
+    // }
   },
   "extensions": [
-    "jaredly.reason-vscode",
-    "badochov.ocaml-formatter",
-    "editorconfig.editorconfig"
+    "ocamllabs.ocaml-platform",
+    // "jaredly.reason-vscode",
+    // "badochov.ocaml-formatter",
+    // "editorconfig.editorconfig"
   ]
 }

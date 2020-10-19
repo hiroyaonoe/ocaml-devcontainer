@@ -1,4 +1,4 @@
-FROM ocaml/opam2:4.08
+FROM ocaml/opam2:latest
 
 # Avoid warnings by switching to noninteractive
 ENV DEBIAN_FRONTEND=noninteractive
@@ -7,7 +7,7 @@ ARG USERNAME=vscode
 ARG USER_UID=1000
 ARG USER_GID=$USER_UID
 
-USER root
+##USER root
 
 # hadolint ignore=DL3008
 RUN apt-get update \
@@ -19,11 +19,11 @@ RUN apt-get update \
   && rm -rf /var/lib/apt/lists/*
 
 # [Optional] Update UID/GID if needed
-RUN if [ "$USER_GID" != "1000" ] || [ "$USER_UID" != "1000" ]; then \
-    groupmod --gid $USER_GID $USERNAME \
-    && usermod --uid $USER_UID --gid $USER_GID $USERNAME \
-    && chown -R $USER_UID:$USER_GID /home/$USERNAME; \
-  fi
+# RUN if [ "$USER_GID" != "1000" ] || [ "$USER_UID" != "1000" ]; then \
+#     groupmod --gid $USER_GID $USERNAME \
+#     && usermod --uid $USER_UID --gid $USER_GID $USERNAME \
+#     && chown -R $USER_UID:$USER_GID /home/$USERNAME; \
+#   fi
 
 USER opam
 
@@ -32,10 +32,13 @@ RUN opam update && \
   opam install \
   base core_kernel \
   ounit qcheck dune \
-  ocamlformat
+  ocamlformat \
+  opam pin add ocaml-lsp-server https://github.com/ocaml/ocaml-lsp.git \
+  opam install ocaml-lsp-server \
+
 
 # Switch back to dialog for any ad-hoc use of apt-get
 ENV DEBIAN_FRONTEND=dialog
 
 # Add opam binaries to PATH.
-ENV PATH=/home/opam/.opam/4.08/bin:$PATH
+ENV PATH=/home/opam/.opam/bin:$PATH
