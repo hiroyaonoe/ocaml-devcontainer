@@ -35,7 +35,7 @@ RUN apt-get update \
 RUN opam update && \
   opam install \
   base core_kernel \
-  ounit qcheck dune \
+  ounit2 qcheck dune \
   ocamlformat && \
   opam pin add ocaml-lsp-server https://github.com/ocaml/ocaml-lsp.git && \
   opam install ocaml-lsp-server && \

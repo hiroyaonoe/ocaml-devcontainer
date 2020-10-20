@@ -21,7 +21,7 @@ This repo can be used to launch an OCaml development environment using Docker an
 ## Included Opam Packages
 - base
 - core_kernel
-- ounit
+- ounit2
 - qcheck
 - dune
 - ocamlformat
