@@ -46,6 +46,6 @@ RUN opam update && \
 ENV DEBIAN_FRONTEND=dialog
 
 # Add opam binaries to PATH.
-ENV PATH=/home/opam/.opam/bin:$PATH
+ENV PATH=/home/opam/.opam/4.10/bin:$PATH
 
 RUN eval $(opam env)
